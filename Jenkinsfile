@@ -26,6 +26,13 @@ pipeline {
             }
         }
 
+        stage('Testing gate') {
+            steps {
+                echo "Testing failure in this stage means a version is not created on docker hub"
+                sh 'exit 1'
+            }
+        }
+
         stage('Build Image') {
             steps {
                 dir('app') {
