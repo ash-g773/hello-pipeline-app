@@ -27,10 +27,6 @@ check("app has routes registered", () => {
   assert.ok(app._router, "app should have a router");
 });
 
-check("failing test", () => {
-  assert.ok(false, "this test should fail")
-})
-
 if (failures > 0) {
   console.log(`\n${failures} test(s) failed`);
   process.exit(1);        // NON-ZERO exit code = the pipeline will fail
