@@ -56,6 +56,8 @@ pipeline {
         }
         failure {
             echo 'Pipeline failed — check which stage went red in the Stage View.'
+            echo "Image ${IMAGE_NAME}:${IMAGE_TAG} failed to push to Docker Hub"
+            echo "Build URL: ${BUILD_URL}"
         }
     }
 }
