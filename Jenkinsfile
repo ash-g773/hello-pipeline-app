@@ -9,8 +9,6 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                echo "checking failure message, purposely failing"
-                sh 'exit 1'
                 checkout scm
                 echo "Building ${IMAGE_NAME}:${IMAGE_TAG}"
             }
