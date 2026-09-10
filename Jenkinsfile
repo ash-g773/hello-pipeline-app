@@ -29,7 +29,8 @@ pipeline {
         stage('Build Image') {
             steps {
                 dir('app') {
-                    sh 'docker build -t $IMAGE_NAME:$IMAGE_TAG -t $IMAGE_NAME:latest .'
+                    sh 'docker build -t $IMAGE_NAME:$IMAGE_TAG .'
+                    sh 'docker build -t $IMAGE_NAME:latest .'
                 }
             }
         }
@@ -42,7 +43,8 @@ pipeline {
                     passwordVariable: 'DOCKER_PASS'
                 )]) {
                     sh 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
-                    sh 'docker push $IMAGE_NAME:$IMAGE_TAG --all-tags'
+                    sh 'docker push $IMAGE_NAME:$IMAGE_TAG'
+                    sh 'docker push $IMAGE_NAME:latest'
                 }
             }
         }
